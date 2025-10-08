@@ -1,16 +1,27 @@
 <svelte:options customElement="my-component" />
 
 <script lang="ts">
-  export let name: string = 'World';
+  import { SimpleForm } from "@sjsf/form";
+  import { resolver } from "@sjsf/form/resolvers/basic";
+  import { translation } from "@sjsf/form/translations/en";
+  import { theme } from "@sjsf/basic-theme";
 </script>
 
-<style>
-  p {
-    color: blue;
-    background: red;
-    font-family: sans-serif;
-    outline: solid 1px red;
-  }
-</style>
-
-<p>Ciao, {name}!</p>
+<SimpleForm
+  {theme}
+  {translation}
+  {resolver}
+  schema={{
+    type: "object",
+    title: 'Form title',
+    properties: {
+      text: {
+        type: "string",
+        title: "Text input",
+      },
+    },
+    required: ["text"],
+  }}
+  validator={{ isValid: () => true }}
+  onSubmit={(v: { text: string }) => window.alert(v.text)}
+/>
