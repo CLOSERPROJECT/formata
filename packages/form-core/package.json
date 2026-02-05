@@ -31,6 +31,12 @@
 			"types": "./dist/index.d.ts",
 			"import": "./dist/index.js",
 			"svelte": "./dist/index.js"
+		},
+		"./form.css": {
+			"import": "./dist/form/form.css"
+		},
+		"./variables.css": {
+			"import": "./dist/form/variables.css"
 		}
 	},
 	"peerDependencies": {

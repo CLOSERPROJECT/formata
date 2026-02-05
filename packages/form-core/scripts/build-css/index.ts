@@ -7,9 +7,9 @@ import postcssOnlyVarsPlugin from 'postcss-only-vars';
 //
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const rootDir = join(__dirname, '..');
+const rootDir = join(__dirname, '..', '..');
 
-const source = join(rootDir, 'src/lib/form/form.css');
+const source = join(rootDir, 'src/routes/layout.css');
 const output = join(rootDir, 'dist/form/form.css');
 const variables = join(rootDir, 'dist/form/variables.css');
 
