@@ -60,9 +60,12 @@
       "name": "form-element",
       "version": "0.0.0",
       "dependencies": {
+        "form-core": "workspace:*",
         "lit": "^3.3.1",
       },
       "devDependencies": {
+        "@sveltejs/vite-plugin-svelte": "^6.2.4",
+        "svelte": "^5.49.2",
         "typescript": "~5.9.3",
         "vite": "^7.2.4",
       },
