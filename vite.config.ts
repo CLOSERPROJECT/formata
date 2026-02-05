@@ -2,18 +2,30 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, type Plugin } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
-import path from 'path';
+import path, { resolve } from 'path';
 import fs from 'fs';
+import { CSS_PLACEHOLDER } from './src/lib/form/utils';
 
-// https://vite.dev/config/
+//
+
 export default defineConfig({
 	plugins: [
 		tailwindcss(),
 		svelte(),
 		inlineBuiltCss({
 			postProcess: postProcessCss
-		})
+		}),
+		copyPreviewTemplate()
 	],
+	build: {
+		lib: {
+			entry: resolve(import.meta.dirname, 'src/lib/index.ts'),
+			name: 'FormataWebComponent',
+			fileName: (format) => `formata-web-component.${format}.js`,
+			formats: ['es', 'umd']
+		},
+		sourcemap: false
+	},
 	resolve: {
 		alias: {
 			$lib: path.resolve('./src/lib')
@@ -48,8 +60,6 @@ export default defineConfig({
 		]
 	}
 });
-
-const PLACEHOLDER = '/*_PLACEHOLDER_*/';
 
 function escapeForJsString(css: string): string {
 	return css
@@ -94,21 +104,38 @@ export function inlineBuiltCss(options: { postProcess?: (css: string) => string 
 			const cssContent = fs.readFileSync(cssPath, 'utf-8');
 			let jsContent = fs.readFileSync(jsPath, 'utf-8');
 
-			if (!jsContent.includes(PLACEHOLDER)) return;
+			if (!jsContent.includes(CSS_PLACEHOLDER)) return;
 
 			let escapedCss = escapeForJsString(cssContent);
 			if (options.postProcess) escapedCss = options.postProcess(escapedCss);
 
-			jsContent = jsContent.replace(PLACEHOLDER, escapedCss);
+			jsContent = jsContent.replace(CSS_PLACEHOLDER, escapedCss);
 			fs.writeFileSync(jsPath, jsContent);
 		}
 	};
 }
 
 export function postProcessCss(css: string): string {
+	console.log('@@@@@ HERE 1');
 	const code = css.split('*,:before,:after,::backdrop').at(1)?.split('}}@layer theme{:root,:host');
 	if (!code) return css;
+	console.log('@@@@@ HERE 2');
 
 	const addition = `@layer properties{:host{${code}}}`;
-	return css + addition;
+	return addition + css;
+}
+
+function copyPreviewTemplate() {
+	return {
+		name: 'copy-preview-template',
+		writeBundle() {
+			const previewTemplate = resolve(__dirname, 'index-preview.html');
+			const distIndex = resolve(__dirname, 'dist/index.html');
+
+			if (fs.existsSync(previewTemplate)) {
+				fs.copyFileSync(previewTemplate, distIndex);
+				console.log('✓ Copied index-preview.html to dist/index.html');
+			}
+		}
+	};
 }

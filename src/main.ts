@@ -1,14 +1,7 @@
-import './app.css';
-
-import Form from './lib/form/form.svelte';
-export { Form };
-
-//
-
 import { mount } from 'svelte';
+import './app.css';
+import App from './app.svelte';
 
-if (import.meta.env.DEV) {
-	mount(Form, {
-		target: document.getElementById('app')!
-	});
-}
+mount(App, {
+	target: document.getElementById('app')!
+});
