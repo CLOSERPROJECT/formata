@@ -1,5 +1,5 @@
 {
-  "name": "form-element",
+  "name": "@formata/web-component",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "form-core": "workspace:*",
+    "@formata/core": "workspace:*",
     "lit": "^3.3.1"
   },
   "devDependencies": {

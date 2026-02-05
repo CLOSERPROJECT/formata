@@ -1,9 +1,9 @@
-import "form-core/form.css";
+import "@formata/core/form.css";
 
 import { LitElement, css, html, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
-import { mountForm } from "form-core";
-import stylesheet from "form-core/form.css?raw";
+import { mountForm } from "@formata/core";
+import stylesheet from "@formata/core/form.css?raw";
 
 //
 

@@ -1,5 +1,5 @@
 {
-	"name": "form-core",
+	"name": "@formata/core",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",

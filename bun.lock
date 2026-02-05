@@ -4,8 +4,8 @@
     "": {
       "name": "formata",
     },
-    "packages/form-core": {
-      "name": "form-core",
+    "packages/core": {
+      "name": "@formata/core",
       "version": "0.0.1",
       "dependencies": {
         "@sjsf/ajv8-validator": "^3.2.1",
@@ -56,11 +56,11 @@
         "svelte": "^5.0.0",
       },
     },
-    "packages/form-element": {
-      "name": "form-element",
+    "packages/web-component": {
+      "name": "@formata/web-component",
       "version": "0.0.0",
       "dependencies": {
-        "form-core": "workspace:*",
+        "@formata/core": "workspace:*",
         "lit": "^3.3.1",
       },
       "devDependencies": {
@@ -149,6 +149,10 @@
     "@floating-ui/dom": ["@floating-ui/dom@1.7.5", "", { "dependencies": { "@floating-ui/core": "^1.7.4", "@floating-ui/utils": "^0.2.10" } }, "sha512-N0bD2kIPInNHUHehXhMke1rBGs1dwqvC9O9KYMyyjK7iXt7GAhnro7UlcuYcGdS/yYOlq0MAVgrow8IbWJwyqg=="],
 
     "@floating-ui/utils": ["@floating-ui/utils@0.2.10", "", {}, "sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ=="],
+
+    "@formata/core": ["@formata/core@workspace:packages/core"],
+
+    "@formata/web-component": ["@formata/web-component@workspace:packages/web-component"],
 
     "@humanfs/core": ["@humanfs/core@0.19.1", "", {}, "sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA=="],
 
@@ -455,10 +459,6 @@
     "flat-cache": ["flat-cache@4.0.1", "", { "dependencies": { "flatted": "^3.2.9", "keyv": "^4.5.4" } }, "sha512-f7ccFPK3SXFHpx15UIGyRJ/FJQctuKZ0zVuN3frBo4HnK3cay9VEW0R6yPYFHC0AgqhukPzKjq22t5DmAyqGyw=="],
 
     "flatted": ["flatted@3.3.3", "", {}, "sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg=="],
-
-    "form-core": ["form-core@workspace:packages/form-core"],
-
-    "form-element": ["form-element@workspace:packages/form-element"],
 
     "fsevents": ["fsevents@2.3.2", "", { "os": "darwin" }, "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="],
 
