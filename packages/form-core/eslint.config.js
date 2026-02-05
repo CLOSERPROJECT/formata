@@ -37,7 +37,7 @@ export default defineConfig(
 		}
 	},
 
-	// Fix for multiple tsconfig.json files found
+	// Fix for multiple tsconfig.json files found in the monorepo
 	{
 		languageOptions: {
 			parserOptions: {
