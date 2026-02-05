@@ -1,0 +1,7 @@
+{
+  "name": "formata",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
