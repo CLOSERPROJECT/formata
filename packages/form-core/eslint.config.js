@@ -35,5 +35,14 @@ export default defineConfig(
 				svelteConfig
 			}
 		}
+	},
+
+	// Fix for multiple tsconfig.json files found
+	{
+		languageOptions: {
+			parserOptions: {
+				tsconfigRootDir: import.meta.dirname
+			}
+		}
 	}
 );
