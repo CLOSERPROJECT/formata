@@ -10,8 +10,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = join(__dirname, '..', '..');
 
 const source = join(rootDir, 'src/routes/layout.css');
-const output = join(rootDir, 'dist/form/form.css');
-const variables = join(rootDir, 'dist/form/variables.css');
+const output = join(rootDir, 'dist/css/form.css');
+const variables = join(rootDir, 'dist/css/variables.css');
 
 // 1) Form CSS with Tailwind
 await buildCss(source, output, {
