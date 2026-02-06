@@ -17,8 +17,6 @@
 />
 
 <script lang="ts">
-	import type { Schema, UiSchema } from '@sjsf/form';
-
 	import { BasicForm } from '@sjsf/form';
 	import { onMount } from 'svelte';
 
@@ -28,12 +26,7 @@
 
 	//
 
-	type Props = {
-		schema: Schema;
-		uiSchema?: UiSchema;
-	};
-
-	let { schema, uiSchema }: Props = $props();
+	let props: Form.Props = $props();
 
 	//
 
@@ -43,7 +36,7 @@
 		attachStyleSheet($host()?.shadowRoot);
 	});
 
-	const form = $derived(Form.make({ schema, uiSchema }));
+	const form = $derived(Form.make(props));
 </script>
 
 <BasicForm {form} />
