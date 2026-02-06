@@ -7,6 +7,26 @@
 		<script type="module" src="./formata-web-component.umd.js"></script>
 	</head>
 	<body>
-		<formata-form></formata-form>
+		<formata-form
+			schema='{
+				"type": "object",
+				"title": "Form title",
+				"properties": {
+					"text": {
+						"type": "string",
+						"title": "Text input"
+					}
+				},
+				"required": ["text"]
+			}'
+			uiSchema='{
+				"text": {
+					"ui:options": {
+						"title": "Text input"
+					}
+				}
+			}'
+		>
+		</formata-form>
 	</body>
 </html>
