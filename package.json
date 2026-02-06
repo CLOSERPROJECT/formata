@@ -54,6 +54,7 @@
 		"@sjsf/form": "^3.2.1",
 		"@sjsf/lucide-icons": "^3.2.1",
 		"@sjsf/shadcn4-theme": "^3.2.1",
-		"ajv": "8"
+		"ajv": "8",
+		"qrcode-generator": "^2.0.4"
 	}
 }
