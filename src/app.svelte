@@ -18,4 +18,11 @@
 		},
 		required: ['text']
 	}}
+	uiSchema={{
+		text: {
+			'ui:components': {
+				textWidget: 'formataQrWidget'
+			}
+		}
+	}}
 />
