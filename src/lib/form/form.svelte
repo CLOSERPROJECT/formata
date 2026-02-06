@@ -2,14 +2,15 @@
 
 <script lang="ts">
 	import { SimpleForm } from '@sjsf/form';
+	import { createFormIdBuilder } from '@sjsf/form/id-builders/modern';
+	import { createFormMerger } from '@sjsf/form/mergers/modern';
 	import { resolver } from '@sjsf/form/resolvers/basic';
 	import { translation } from '@sjsf/form/translations/en';
-	import { createFormMerger } from '@sjsf/form/mergers/modern';
-	import { createFormIdBuilder } from '@sjsf/form/id-builders/modern';
 	import { createFormValidator } from '@sjsf/form/validators/noop';
 	import { theme } from '@sjsf/shadcn4-theme';
-	import { setShadcnThemeContext } from './theme';
 	import { onMount } from 'svelte';
+
+	import { setShadcnThemeContext } from './theme';
 	import { CSS_PLACEHOLDER } from './utils';
 
 	setShadcnThemeContext();
