@@ -1,7 +1,7 @@
-import path from 'path';
-import fs from 'fs';
-import { CSS_PLACEHOLDER } from './src/lib/form/utils';
 import type { Plugin } from 'vite';
+
+import fs from 'fs';
+import path from 'path';
 
 //
 
@@ -20,7 +20,10 @@ export function copyPreviewTemplate(options: { src: string }) {
 	};
 }
 
-export function inlineBuiltCss(options: { transform?: (css: string) => string } = {}): Plugin {
+export function inlineBuiltCss(options: {
+	placeholder: string;
+	transform?: (css: string) => string;
+}): Plugin {
 	return {
 		name: 'inline-built-css',
 		enforce: 'post',
@@ -52,13 +55,13 @@ export function inlineBuiltCss(options: { transform?: (css: string) => string } 
 			const cssContent = fs.readFileSync(cssPath, 'utf-8');
 			let jsContent = fs.readFileSync(jsPath, 'utf-8');
 
-			if (!jsContent.includes(CSS_PLACEHOLDER)) return;
+			if (!jsContent.includes(options.placeholder)) return;
 
 			let cssToInline = cssContent;
 			if (options.transform) cssToInline = options.transform(cssToInline);
 			const escapedCss = escapeForJsString(cssToInline);
 
-			jsContent = jsContent.replace(CSS_PLACEHOLDER, escapedCss);
+			jsContent = jsContent.replace(options.placeholder, escapedCss);
 			fs.writeFileSync(jsPath, jsContent);
 			fs.unlinkSync(cssPath);
 		}

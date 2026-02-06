@@ -1,12 +1,14 @@
-import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'vitest/config';
-import { playwright } from '@vitest/browser-playwright';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
+import tailwindcss from '@tailwindcss/vite';
+import { playwright } from '@vitest/browser-playwright';
 import path, { resolve } from 'path';
+import { defineConfig } from 'vitest/config';
+
+import { CSS_PLACEHOLDER } from './src/lib/form/style';
 import {
-	inlineBuiltCss,
 	copyPreviewTemplate,
-	includeCoreTailwindVariablesInHost
+	includeCoreTailwindVariablesInHost,
+	inlineBuiltCss
 } from './vite.plugins';
 
 //
@@ -16,6 +18,7 @@ export default defineConfig({
 		tailwindcss(),
 		svelte(),
 		inlineBuiltCss({
+			placeholder: CSS_PLACEHOLDER,
 			transform: includeCoreTailwindVariablesInHost
 		}),
 		copyPreviewTemplate({ src: 'index-preview.html' })
