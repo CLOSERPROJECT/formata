@@ -12,17 +12,20 @@
 				"type": "object",
 				"title": "Form title",
 				"properties": {
-					"text": {
+					"qr_code": {
 						"type": "string",
-						"title": "Text input"
+						"title": "QR Code"
 					}
 				},
-				"required": ["text"]
+				"required": ["qr_code"]
 			}'
 			ui-schema='{
-				"text": {
+				"qr_code": {
 					"ui:options": {
-						"title": "Text field label"
+						"title": "QR Code"
+					},
+					"ui:components": {
+						"textWidget": "formataQrWidget"
 					}
 				}
 			}'
