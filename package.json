@@ -11,7 +11,8 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"test:unit": "vitest",
-		"test": "npm run test:unit -- --run"
+		"test": "npm run test:unit -- --run",
+		"serve": "bun run build && bun run preview"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^2.0.1",
