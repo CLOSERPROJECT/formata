@@ -1,14 +1,12 @@
 import { createFormValidator as validator } from '@sjsf/ajv8-validator';
 import { createForm, type Schema, type UiSchema } from '@sjsf/form';
-import '@sjsf/form/fields/extra/enum-include';
-import '@sjsf/form/fields/extra/file-include';
-import '@sjsf/form/fields/extra/multi-enum-include';
-import '@sjsf/form/fields/extra/unknown-native-file-include';
+import { createFocusOnFirstError } from '@sjsf/form/focus-on-first-error';
 import { createFormIdBuilder as idBuilder } from '@sjsf/form/id-builders/modern';
 import { createFormMerger as merger } from '@sjsf/form/mergers/modern';
-import { resolver } from '@sjsf/form/resolvers/basic';
 import { translation } from '@sjsf/form/translations/en';
-import { theme } from '@sjsf/shadcn4-theme';
+
+import { resolver } from './sjsf/resolver';
+import { icons, theme } from './sjsf/theme';
 
 //
 
@@ -21,11 +19,13 @@ export function make(props: Props) {
 	return createForm({
 		resolver,
 		theme,
+		icons,
 		idBuilder,
 		validator,
 		merger,
 		translation,
 		schema: props.schema,
-		uiSchema: props.uiSchema
+		uiSchema: props.uiSchema,
+		onSubmitError: createFocusOnFirstError()
 	});
 }

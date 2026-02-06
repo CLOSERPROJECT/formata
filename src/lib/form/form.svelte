@@ -17,12 +17,13 @@
 />
 
 <script lang="ts">
-	import { BasicForm } from '@sjsf/form';
+	import { BasicForm, getErrors, getValueSnapshot } from '@sjsf/form';
+	import { preventPageReload } from '@sjsf/form/prevent-page-reload.svelte';
 	import { onMount } from 'svelte';
 
 	import * as Form from './form';
+	import { setShadcnThemeContext } from './sjsf/theme';
 	import { attachStyleSheet } from './style';
-	import { setShadcnThemeContext } from './theme';
 
 	//
 
@@ -36,7 +37,14 @@
 		attachStyleSheet($host()?.shadowRoot);
 	});
 
-	const form = $derived(Form.make(props));
+	const form = Form.make(props);
+	preventPageReload(form);
 </script>
 
 <BasicForm {form} />
+
+<pre>{JSON.stringify(
+		{ value: getValueSnapshot(form), errors: Array.from(getErrors(form)) },
+		null,
+		2
+	)}</pre>

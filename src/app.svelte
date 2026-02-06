@@ -10,15 +10,12 @@
 			text: {
 				type: 'string',
 				title: 'Text input'
+			},
+			file: {
+				type: 'string',
+				format: 'data-url'
 			}
 		},
 		required: ['text']
-	}}
-	uiSchema={{
-		text: {
-			'ui:options': {
-				title: 'Text input'
-			}
-		}
 	}}
 />

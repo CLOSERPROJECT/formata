@@ -43,6 +43,11 @@ import '@sjsf/shadcn4-theme/extra-widgets/range-slider-include';
 import '@sjsf/shadcn4-theme/extra-widgets/switch-include';
 import '@sjsf/shadcn4-theme/extra-widgets/textarea-include';
 
+//
+
+export { icons } from '@sjsf/lucide-icons';
+export { theme } from '@sjsf/shadcn4-theme';
+
 export function setShadcnThemeContext() {
 	setThemeContext({
 		components: {
