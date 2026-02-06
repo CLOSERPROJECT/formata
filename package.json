@@ -14,6 +14,14 @@
 		"test": "npm run test:unit -- --run",
 		"serve": "bun run build && bun run preview"
 	},
+	"main": "./dist/formata-web-component.umd.js",
+	"module": "./dist/formata-web-component.es.js",
+	"exports": {
+		".": {
+			"default": "./dist/formata-web-component.umd.js",
+			"import": "./dist/formata-web-component.es.js"
+		}
+	},
 	"devDependencies": {
 		"@eslint/compat": "^2.0.1",
 		"@eslint/js": "^9.39.2",
