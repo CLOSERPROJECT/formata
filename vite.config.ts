@@ -4,7 +4,7 @@ import { playwright } from '@vitest/browser-playwright';
 import path, { resolve } from 'path';
 import { defineConfig } from 'vitest/config';
 
-import { CSS_PLACEHOLDER } from './src/lib/form/style';
+import { CSS_PLACEHOLDER } from './src/lib/form/constants';
 import {
 	copyPreviewTemplate,
 	includeCoreTailwindVariablesInHost,

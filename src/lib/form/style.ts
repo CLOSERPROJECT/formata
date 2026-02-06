@@ -1,4 +1,6 @@
-export const CSS_PLACEHOLDER = '/*_CSS_PLACEHOLDER_*/';
+import { CSS_PLACEHOLDER } from './constants';
+
+export { CSS_PLACEHOLDER } from './constants';
 
 export function attachStyleSheet(shadowRoot: ShadowRoot | null | undefined) {
 	if (!shadowRoot) return;
