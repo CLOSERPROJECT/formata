@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Formata Web Component</title>
+		<script type="module" src="./formata-web-component.umd.js"></script>
+	</head>
+	<body>
+		<formata-form
+			schema='{
+				"type": "object",
+				"title": "Form title",
+				"properties": {
+					"qr_code": {
+						"type": "string",
+						"title": "QR Code"
+					},
+					"file": {
+						"title": "File input"
+					}
+				},
+				"required": ["qr_code"]
+			}'
+			ui-schema='{
+				"qr_code": {
+					"ui:options": {
+						"title": "QR Code"
+					},
+					"ui:components": {
+						"textWidget": "formataQrWidget"
+					}
+				},
+				"file": {
+					"ui:components": {
+						"unknownField": "unknownNativeFileField"
+					}
+				}
+			}'
+		>
+		</formata-form>
+
+		<script>
+			console.log('Adding event listener for submit event');
+			document.addEventListener(
+				'submit',
+				(event) => {
+					console.log('Global submit event caught:', event);
+					if (!(event instanceof CustomEvent)) return;
+					if (!(event.detail instanceof FormData)) return;
+					const entries = Object.fromEntries(event.detail.entries());
+					console.log('FormData:', entries);
+				},
+				{ capture: true }
+			);
+		</script>
+	</body>
+</html>
