@@ -45,13 +45,13 @@
 			document.addEventListener(
 				'submit',
 				(event) => {
-					console.log('Submit event caught:', event);
-					const formData = event.formData;
-					if (!(formData instanceof FormData)) return;
-					const entries = Object.fromEntries(formData.entries());
+					console.log('Global submit event caught:', event);
+					if (!(event instanceof CustomEvent)) return;
+					if (!(event.detail instanceof FormData)) return;
+					const entries = Object.fromEntries(event.detail.entries());
 					console.log('FormData:', entries);
 				},
-				true
+				{ capture: true }
 			);
 		</script>
 	</body>

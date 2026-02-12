@@ -16,7 +16,7 @@ export type Props = {
 	uiSchema?: UiSchema;
 };
 
-export function make(props: Props) {
+export function make(props: Props, host: () => HTMLElement) {
 	return createForm({
 		resolver,
 		theme,
@@ -28,24 +28,19 @@ export function make(props: Props) {
 		schema: props.schema,
 		uiSchema: props.uiSchema,
 		onSubmitError: createFocusOnFirstError(),
-		onSubmit: (data, ev) => {
-			const formData = serialize(data);
-
-			const form = ev.target as HTMLFormElement;
-			const root = form.getRootNode();
-			const host = root instanceof ShadowRoot ? root.host : form;
-			const composed = new SubmitEvent('submit', {
-				bubbles: true,
-				composed: true,
-				cancelable: true,
-				submitter: ev.submitter ?? undefined
-			});
-			Object.defineProperty(composed, 'formData', {
-				value: formData,
-				writable: false,
-				configurable: true
-			});
-			host.dispatchEvent(composed);
+		onSubmit: (data) => {
+			if (import.meta.env.DEV) {
+				console.log(data);
+				return;
+			}
+			host().dispatchEvent(
+				new CustomEvent('submit', {
+					bubbles: true,
+					composed: true,
+					cancelable: true,
+					detail: serialize(data)
+				})
+			);
 		}
 	});
 }
