@@ -21,7 +21,7 @@
 	import { preventPageReload } from '@sjsf/form/prevent-page-reload.svelte';
 	import { onMount } from 'svelte';
 
-	import * as Form from './form';
+	import * as Form from './form.svelte.js';
 	import { setShadcnThemeContext } from './sjsf/theme';
 	import { attachStyleSheet } from './style';
 

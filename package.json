@@ -18,8 +18,8 @@
 	"module": "./dist/formata-web-component.es.js",
 	"exports": {
 		".": {
-			"default": "./dist/formata-web-component.umd.js",
-			"import": "./dist/formata-web-component.es.js"
+			"import": "./dist/formata-web-component.es.js",
+			"default": "./dist/formata-web-component.umd.js"
 		}
 	},
 	"devDependencies": {
@@ -63,6 +63,7 @@
 		"@sjsf/lucide-icons": "^3.2.1",
 		"@sjsf/shadcn4-theme": "^3.2.1",
 		"ajv": "8",
+		"object-to-formdata": "^4.5.1",
 		"qrcode-generator": "^2.0.4"
 	}
 }
