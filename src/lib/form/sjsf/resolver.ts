@@ -7,10 +7,13 @@ import {
 	type ResolveFieldType
 } from '@sjsf/form';
 import { getSimpleSchemaType, isFileSchema, isFixedItems } from '@sjsf/form/core';
+import '@sjsf/form/fields/extra/array-native-files-include';
 import '@sjsf/form/fields/extra/enum-include';
 import '@sjsf/form/fields/extra/file-include';
 import '@sjsf/form/fields/extra/files-include';
 import '@sjsf/form/fields/extra/multi-enum-include';
+import '@sjsf/form/fields/extra/native-file-include';
+import '@sjsf/form/fields/extra/native-files-include';
 import '@sjsf/form/fields/extra/unknown-native-file-include';
 
 //

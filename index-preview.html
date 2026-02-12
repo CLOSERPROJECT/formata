@@ -15,6 +15,9 @@
 					"qr_code": {
 						"type": "string",
 						"title": "QR Code"
+					},
+					"file": {
+						"title": "File input"
 					}
 				},
 				"required": ["qr_code"]
@@ -27,9 +30,29 @@
 					"ui:components": {
 						"textWidget": "formataQrWidget"
 					}
+				},
+				"file": {
+					"ui:components": {
+						"unknownField": "unknownNativeFileField"
+					}
 				}
 			}'
 		>
 		</formata-form>
+
+		<script>
+			console.log('Adding event listener for submit event');
+			document.addEventListener(
+				'submit',
+				(event) => {
+					console.log('Global submit event caught:', event);
+					if (!(event instanceof CustomEvent)) return;
+					if (!(event.detail instanceof FormData)) return;
+					const entries = Object.fromEntries(event.detail.entries());
+					console.log('FormData:', entries);
+				},
+				{ capture: true }
+			);
+		</script>
 	</body>
 </html>

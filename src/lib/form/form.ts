@@ -4,6 +4,7 @@ import { createFocusOnFirstError } from '@sjsf/form/focus-on-first-error';
 import { createFormIdBuilder as idBuilder } from '@sjsf/form/id-builders/modern';
 import { createFormMerger as merger } from '@sjsf/form/mergers/modern';
 import { translation } from '@sjsf/form/translations/en';
+import { serialize } from 'object-to-formdata';
 
 import { resolver } from './sjsf/resolver';
 import { icons, theme } from './sjsf/theme';
@@ -15,7 +16,7 @@ export type Props = {
 	uiSchema?: UiSchema;
 };
 
-export function make(props: Props) {
+export function make(props: Props, host: () => HTMLElement) {
 	return createForm({
 		resolver,
 		theme,
@@ -26,6 +27,20 @@ export function make(props: Props) {
 		translation,
 		schema: props.schema,
 		uiSchema: props.uiSchema,
-		onSubmitError: createFocusOnFirstError()
+		onSubmitError: createFocusOnFirstError(),
+		onSubmit: (data) => {
+			if (import.meta.env.DEV) {
+				console.log(data);
+				return;
+			}
+			host().dispatchEvent(
+				new CustomEvent('submit', {
+					bubbles: true,
+					composed: true,
+					cancelable: true,
+					detail: serialize(data)
+				})
+			);
+		}
 	});
 }

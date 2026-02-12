@@ -21,7 +21,7 @@
 	import { preventPageReload } from '@sjsf/form/prevent-page-reload.svelte';
 	import { onMount } from 'svelte';
 
-	import * as Form from './form';
+	import * as Form from './form.js';
 	import { setShadcnThemeContext } from './sjsf/theme';
 	import { attachStyleSheet } from './style';
 
@@ -37,14 +37,16 @@
 		attachStyleSheet($host()?.shadowRoot);
 	});
 
-	const form = Form.make(props);
+	const form = Form.make(props, () => $host());
 	preventPageReload(form);
 </script>
 
 <BasicForm {form} />
 
-<pre>{JSON.stringify(
-		{ value: getValueSnapshot(form), errors: Array.from(getErrors(form)) },
-		null,
-		2
-	)}</pre>
+{#if import.meta.env.DEV}
+	<pre>{JSON.stringify(
+			{ value: getValueSnapshot(form), errors: Array.from(getErrors(form)) },
+			null,
+			2
+		)}</pre>
+{/if}
