@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Form } from '$lib';
+	import { schema, uiSchema } from '$lib/samples';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
@@ -17,31 +18,4 @@
 	});
 </script>
 
-<Form
-	schema={{
-		type: 'object',
-		title: 'Form title',
-		properties: {
-			text: {
-				type: 'string',
-				title: 'Text input'
-			},
-			file: {
-				title: 'File input'
-			}
-		},
-		required: ['text']
-	}}
-	uiSchema={{
-		text: {
-			'ui:components': {
-				stringField: 'formataQrField'
-			}
-		},
-		file: {
-			'ui:components': {
-				unknownField: 'unknownNativeFileField'
-			}
-		}
-	}}
-/>
+<Form {schema} {uiSchema} />
