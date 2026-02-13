@@ -11,6 +11,16 @@
 				type: 'Object',
 				reflect: true,
 				attribute: 'ui-schema'
+			},
+			preventPageReload: {
+				type: 'Boolean',
+				reflect: true,
+				attribute: 'prevent-page-reload'
+			},
+			darkMode: {
+				type: 'Boolean',
+				reflect: true,
+				attribute: 'dark-mode'
 			}
 		}
 	}}
@@ -27,7 +37,17 @@
 
 	//
 
-	let props: Form.Props = $props();
+	type Options = {
+		darkMode?: boolean;
+		preventPageReload?: boolean;
+	};
+
+	let {
+		schema,
+		uiSchema,
+		darkMode,
+		preventPageReload: preventReload
+	}: Form.Props & Options = $props();
 
 	//
 
@@ -37,11 +57,16 @@
 		attachStyleSheet($host()?.shadowRoot);
 	});
 
-	const form = Form.make(props, () => $host());
-	preventPageReload(form);
+	const form = $derived(Form.make({ schema, uiSchema }, () => $host()));
+
+	$effect(() => {
+		if (preventReload) preventPageReload(form);
+	});
 </script>
 
-<BasicForm {form} />
+<div class={[darkMode && 'dark']}>
+	<BasicForm {form} />
+</div>
 
 {#if import.meta.env.DEV}
 	<pre>{JSON.stringify(
