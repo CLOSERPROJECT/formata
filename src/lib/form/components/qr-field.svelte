@@ -2,7 +2,7 @@
 	import type { ComponentProps } from '@sjsf/form';
 
 	import { TriangleAlert } from '@lucide/svelte';
-	import TextWidget from '@sjsf/shadcn4-theme/widgets/text.svelte';
+	import StringField from '@sjsf/form/fields/string.svelte';
 	import { getExceptionMessage } from '$lib/utils';
 	import qrcode from 'qrcode-generator';
 
@@ -10,7 +10,7 @@
 
 	// eslint-disable-next-line svelte/no-unused-svelte-ignore
 	// svelte-ignore custom_element_props_identifier
-	let { value = $bindable(), ...rest }: ComponentProps['textWidget'] = $props();
+	let { value = $bindable(), ...rest }: ComponentProps['stringField'] = $props();
 
 	function generateQrCode(text: string, cellSize = 20) {
 		const qr = qrcode(0, 'L');
@@ -30,7 +30,7 @@
 </script>
 
 <div class="flex gap-4">
-	<TextWidget bind:value {...rest} />
+	<StringField bind:value {...rest} />
 	<div
 		class={[
 			'aspect-square size-48 shrink-0 overflow-hidden rounded-md border bg-slate-50',

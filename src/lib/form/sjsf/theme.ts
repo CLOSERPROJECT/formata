@@ -1,6 +1,6 @@
 import { extendByRecord } from '@sjsf/form/lib/resolver';
 import { theme as shadcnTheme } from '@sjsf/shadcn4-theme';
-import QrWidget from '$lib/form/components/qr-widget.svelte';
+import QrField from '$lib/form/components/qr-field.svelte';
 
 //
 
@@ -11,13 +11,13 @@ export { setShadcnThemeContext } from './theme-context';
 
 declare module '@sjsf/form' {
 	interface ComponentProps {
-		formataQrWidget: ComponentProps['textWidget'];
+		formataQrField: ComponentProps['stringField'];
 	}
 	interface ComponentBindings {
-		formataQrWidget: 'value';
+		formataQrField: 'value';
 	}
 }
 
 export const theme = extendByRecord(shadcnTheme, {
-	formataQrWidget: QrWidget
+	formataQrField: QrField
 });

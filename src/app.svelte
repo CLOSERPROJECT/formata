@@ -35,7 +35,7 @@
 	uiSchema={{
 		text: {
 			'ui:components': {
-				textWidget: 'formataQrWidget'
+				stringField: 'formataQrField'
 			}
 		},
 		file: {
