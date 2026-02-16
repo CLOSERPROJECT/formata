@@ -6,6 +6,11 @@ export const uiSchema: UiSchema = {
 			stringField: 'formataQrField'
 		}
 	},
+	native_file: {
+		'ui:components': {
+			unknownField: 'unknownNativeFileField'
+		}
+	},
 	checkbox: {
 		default: {
 			'ui:options': {

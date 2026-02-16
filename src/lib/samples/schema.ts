@@ -7,6 +7,9 @@ export const schema: Schema = {
 			type: 'string',
 			title: 'QR Code'
 		},
+		native_file: {
+			title: 'Native File'
+		},
 		checkbox: {
 			type: 'object',
 			properties: {
