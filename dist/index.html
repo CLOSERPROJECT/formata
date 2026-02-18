@@ -18,6 +18,13 @@
 					},
 					"file": {
 						"title": "File input"
+					},
+					"Choice field": {
+						"enum": [
+							"a",
+							"v"
+						],
+						"title": "Choice field"
 					}
 				},
 				"required": ["qr_code", "file"]
@@ -34,6 +41,11 @@
 				"file": {
 					"ui:components": {
 						"unknownField": "unknownNativeFileField"
+					}
+				},
+				"Choice field": {
+					"ui:components": {
+						"stringField": "enumField"
 					}
 				}
 			}'
