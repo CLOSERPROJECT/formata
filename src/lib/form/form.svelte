@@ -29,6 +29,7 @@
 <script lang="ts">
 	import { BasicForm, getErrors, getValueSnapshot } from '@sjsf/form';
 	import { preventPageReload } from '@sjsf/form/prevent-page-reload.svelte';
+	import { BitsConfig } from 'bits-ui';
 	import { onMount } from 'svelte';
 
 	import * as Form from './form.js';
@@ -62,10 +63,14 @@
 	$effect(() => {
 		if (preventReload) preventPageReload(form);
 	});
+
+	let container = $state<HTMLDivElement>();
 </script>
 
-<div class={[darkMode && 'dark']}>
-	<BasicForm {form} />
+<div bind:this={container} class={[darkMode && 'dark']}>
+	<BitsConfig defaultPortalTo={container}>
+		<BasicForm {form} />
+	</BitsConfig>
 </div>
 
 {#if import.meta.env.DEV}
