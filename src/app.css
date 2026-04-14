@@ -124,3 +124,26 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+:root,
+:host {
+	input[type='file'] {
+		@apply cursor-pointer py-[5px] pl-[5px] hover:bg-secondary;
+	}
+
+	input[type='file']::-webkit-file-upload-button,
+	input[type='file']::file-selector-button {
+		@apply rounded-sm bg-primary text-primary-foreground transition-colors duration-150;
+		@apply px-2 py-0.5;
+	}
+
+	input[type='file']:hover::-webkit-file-upload-button,
+	input[type='file']:hover::file-selector-button {
+		@apply cursor-pointer;
+	}
+
+	input[type='file']:focus-visible::-webkit-file-upload-button,
+	input[type='file']:focus-visible::file-selector-button {
+		@apply ring-2 ring-ring outline-none;
+	}
+}
