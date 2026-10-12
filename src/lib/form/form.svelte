@@ -44,8 +44,8 @@
 	import { BitsConfig } from 'bits-ui';
 	import { onMount } from 'svelte';
 
-	import { registerFormataBridge } from './formata-element.js';
 	import * as Form from './form.js';
+	import { registerFormataBridge } from './formata-element.js';
 	import { setShadcnThemeContext } from './sjsf/theme';
 	import { attachStyleSheet } from './style';
 
