@@ -14,6 +14,8 @@ import { icons, theme } from './sjsf/theme';
 export type Props = {
 	schema: Schema;
 	uiSchema?: UiSchema;
+	/** Nested form data applied when the form instance is (re)created. */
+	initialValue?: Record<string, unknown>;
 };
 
 export function make(props: Props, host: () => HTMLElement) {
@@ -27,6 +29,7 @@ export function make(props: Props, host: () => HTMLElement) {
 		translation,
 		schema: props.schema,
 		uiSchema: props.uiSchema,
+		initialValue: props.initialValue,
 		onSubmitError: createFocusOnFirstError(),
 		onSubmit: (data) => {
 			if (import.meta.env.DEV) {
